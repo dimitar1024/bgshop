@@ -1,0 +1,29 @@
+
+.product{
+    width: 240px;
+    margin: 15px;;
+}
+
+
+button,.prices{ display: inline-block;}
+
+
+.oldprice{
+    color: black;
+    text-decoration: line-through;
+    font-weight: bolder;
+}
+
+.newprice{
+    color: red;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+mat-card-actions{
+    text-align: right; 
+}
+
+.prices{
+    padding: 5px 10px;
+}

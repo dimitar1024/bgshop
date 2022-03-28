@@ -1,0 +1,45 @@
+<app-header>
+
+</app-header>
+ 
+  
+ <app-product-view>
+   
+ </app-product-view>
+
+
+ <div *ngFor="let d of items" class="card">
+   <div>
+     <img class="product-img" src="assets/products/{{d.model}}.jpg" />
+   </div>
+
+   <div> <p class="product-name" >{{d.name}} </p> </div>
+    <p>{{d.model}} </p>
+ 
+    <div class="actions">
+      <a class="read-more"> Виж повече</a>
+
+      <div class="product-price">
+        <span *ngIf="d.promopercentage == 0">{{d.price}}</span>
+        <span class="old-price" *ngIf="d.promopercentage > 0">{{d.price}}</span>
+<span *ngIf="d.promopercentage >0"> {{d.price - ((d.promopercentage * d.price)/100)}} </span>
+      </div>
+    </div>
+ </div> 
+ <button style='background-color: red' (click)='delete()'>Delete</button> 
+
+<app-footer>
+
+</app-footer>
+
+<!-- 
+ <agm-map   > 
+    <agm-marker 
+
+        [latitude]="lat" 
+
+        [longitude]="long">    
+
+    </agm-marker>
+ 
+</agm-map> -->
