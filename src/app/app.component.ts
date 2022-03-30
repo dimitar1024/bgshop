@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { IProduct } from './ipost';
+import { Observable } from 'rxjs'; 
+import { IProduct } from './interfaces/IProduct';
+import { CookieService } from 'ngx-cookie-service'; 
+import * as CryptoJS from 'crypto-js'; 
 
 @Component({
   selector: 'app-root',
@@ -12,18 +14,51 @@ import { IProduct } from './ipost';
 
 export class AppComponent {
   title = 'PROJECT';
-
+  cookieValue : string;
   items!: IProduct[];
-  constructor(public db: AngularFirestore) {
+
+  val :string ='';
+  
+  encryptSecretKey : string = '@ngu!@rT3st';
+  constructor(public db: AngularFirestore,  private cookieService: CookieService) {
 
     // todo it's work this.db.doc('product/1').update({price: 2300});
 
-    const tutorial =   { name: 'бойлер', price: 349, model: 'SKU3333', promopercentage: 0};
+  //  const tutorial =   { name: 'бойлер', price: 349, model: 'SKU3333', promopercentage: 0};
 
   //  db.collection('product').doc('45').set(tutorial);
       this.getAllProducts(); 
       
+      this.val = this.encryptData('Test Cookie')!.toString();
+
+       this.cookieService.set( '_u', this.val ); // To Set Cookie
+  this.cookieValue = this.decryptData(this.cookieService.get('name')); // To Get Cookie
+  console.log(this.cookieValue);
   }
+
+  encryptData(data: string): string {
+
+    try {
+      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+    } catch (e) { 
+      console.log(e);
+      return '';
+    }
+  }
+
+  decryptData(data :string) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 
 
   getAllProducts() {

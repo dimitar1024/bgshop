@@ -23,9 +23,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductModule } from './product/product.module';
-  
+import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatFormFieldModule} from '@angular/material/form-field';  
 //import { AgmCoreModule } from '@agm/core';
-
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent
@@ -48,10 +49,12 @@ import { ProductModule } from './product/product.module';
     MatCardModule, 
     MatButtonModule ,
     FlexLayoutModule,
-    ProductModule
+    ProductModule,
+    MatGridListModule,
+    MatFormFieldModule
     
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

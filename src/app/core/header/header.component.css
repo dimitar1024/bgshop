@@ -5,3 +5,8 @@ mat-toolbar{
 .example-spacer {
     flex: 1 1 auto;
   }
+
+
+.userpanel span{
+    margin-left: 15px;;
+}
