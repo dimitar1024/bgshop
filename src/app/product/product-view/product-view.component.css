@@ -1,7 +1,7 @@
 
 .product{
     width: 240px;
-    margin: 15px;;
+    margin: 15px;
 }
   
 button,.prices{ display: inline-block;}
@@ -31,4 +31,8 @@ mat-card-actions{
 .product-image{
     height: 250px !important;
     text-align: center;
+}
+
+.floatleft{
+    float: left;
 }

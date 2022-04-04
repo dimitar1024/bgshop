@@ -1,0 +1,49 @@
+<form #loginForm="ngForm" (ngSubmit)="submitLogin(loginForm)">
+  <div class="form-wraper">
+    <div class="form-container card">
+      <div class="form-header">
+      </div>
+
+      <div class="form-body">
+        <mat-form-field class="justifier">
+          <input matInput #emailt="ngModel" placeholder="Емайл" name="email" ngModel id="email" text="email"
+            minlength="5" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="emailt.touched && emailt.invalid">
+          <p *ngIf="emailt.errors!['required']" class="error">
+            Емайла е задължителен.
+          </p>
+          <p *ngIf="emailt.errors!['minlength']" class="error">
+            Емайла трябва да бъде най-малко 5 символа.
+          </p>
+        </ng-container>
+
+        <mat-form-field class="justifier">
+          <input matInput #passwordt="ngModel" placeholder="Парола" ngModel name="password" minlength="5"
+            text="password" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="passwordt.touched && passwordt.invalid">
+          <p *ngIf="passwordt.errors!['required']" class="error">
+            Паролата е задължителена.
+          </p>
+          <p *ngIf="passwordt.errors!['minlength']" class="error">
+            Паролата трябва да бъде най-малко 5 символа.
+          </p>
+        </ng-container>
+
+
+      </div>
+
+      <div class="form-footer">
+        <button [disabled]="loginForm.invalid" mat-raised-button class="btn custom-btn">
+          <mat-icon>input</mat-icon> Вход
+        </button>
+      </div>
+      <div class="additional-link">
+        <a routerLink="/register">Нямате регистрация <strong>Направете си от тук</strong></a>
+      </div>
+    </div>
+  </div>
+</form>

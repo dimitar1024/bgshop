@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs'; 
+import { Observable } from 'rxjs';
 import { IProduct } from './interfaces/IProduct';
-import { CookieService } from 'ngx-cookie-service'; 
-import * as CryptoJS from 'crypto-js'; 
+import { CookieService } from 'ngx-cookie-service';
+import * as CryptoJS from 'crypto-js';
+import { IEmployee } from './interfaces/IEmployee';
 
 @Component({
   selector: 'app-root',
@@ -14,62 +15,48 @@ import * as CryptoJS from 'crypto-js';
 
 export class AppComponent {
   title = 'PROJECT';
-  cookieValue : string;
+  cookieValue: string;
   items!: IProduct[];
+  empl!: IEmployee[];
 
-  val :string ='';
-  
-  encryptSecretKey : string = '@ngu!@rT3st';
-  constructor(public db: AngularFirestore,  private cookieService: CookieService) {
+  val: string = '';
+
+  encryptSecretKey: string = '@ngu!@rT3st';
+  constructor(public db: AngularFirestore, private cookieService: CookieService) {
 
     // todo it's work this.db.doc('product/1').update({price: 2300});
 
-  //  const tutorial =   { name: 'бойлер', price: 349, model: 'SKU3333', promopercentage: 0};
+    //  const tutorial =   { name: 'бойлер', price: 349, model: 'SKU3333', promopercentage: 0};
 
-  //  db.collection('product').doc('45').set(tutorial);
-      this.getAllProducts(); 
-      
-      this.val = this.encryptData('Test Cookie')!.toString();
-
-       this.cookieService.set( '_u', this.val ); // To Set Cookie
-  this.cookieValue = this.decryptData(this.cookieService.get('name')); // To Get Cookie
-  console.log(this.cookieValue);
-  }
-
-  encryptData(data: string): string {
-
-    try {
-      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
-    } catch (e) { 
-      console.log(e);
-      return '';
+    const user = {
+      address: 'bla bla',
+      first_name: 'Kianna',
+      email: 'kianna@test.bg',
+      last_name: 'Watson',
+      phone: '555-444-333',
+      role: 3,
     }
+ 
+    //this.getUser('sysadmin@test.bg', '123456');
+
+//this.getUser();
+
+    //let v: boolean = this.isLoggedIn;
+    //console.log('test', v);
+  
+     
+    // db.collection('user').doc('3').set(user);
+    //  db.collection('product').doc('45').set(tutorial);
+ 
+
+    //this.val = this.encryptData('Test Cookie')!.toString();
+
+    // this.cookieService.set( '_u', this.val ); // To Set Cookie
+    // this.cookieValue = this.decryptData(this.cookieService.get('name')); // To Get Cookie
+    // console.log(this.cookieValue);
   }
-
-  decryptData(data :string) {
-
-    try {
-      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
-      if (bytes.toString()) {
-        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-      }
-      return data;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-
-
-  getAllProducts() {
-    this.db.collection('product').snapshotChanges().subscribe((response) => {
-      this.items = response.map(item => {
-        return item.payload.doc.data() as IProduct;
-      }
-      );
-    })
-  } 
-
+ 
+ 
 
   delete() {
     if (confirm('Delete?')) {
@@ -77,8 +64,7 @@ export class AppComponent {
 
     }
   }
-} 
-
+}
 
 
 

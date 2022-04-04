@@ -27,9 +27,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';  
 //import { AgmCoreModule } from '@agm/core';
 import { CookieService } from 'ngx-cookie-service';
+import { HomeComponent } from './home/home.component'; 
+import { SharedModule } from './shared/shared.module';
+import {MatBadgeModule} from '@angular/material/badge'; 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule, 
@@ -51,8 +56,9 @@ import { CookieService } from 'ngx-cookie-service';
     FlexLayoutModule,
     ProductModule,
     MatGridListModule,
-    MatFormFieldModule
-    
+    MatFormFieldModule,
+    SharedModule,
+    MatBadgeModule 
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';  
  import {MatGridListModule} from '@angular/material/grid-list'; 
  import {MatFormFieldModule} from '@angular/material/form-field'; 
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule
   ],
   exports:[  HeaderComponent,
     FooterComponent]

@@ -1,0 +1,108 @@
+<form #regForm="ngForm" (ngSubmit)="submitRegister(regForm)"> 
+<div class="form-wraper">
+    <div class="form-container card">
+      <div class="form-header">
+         
+      </div>
+  
+      <div class="form-body">
+        <mat-form-field class="justifier">
+            <input matInput #usernamet="ngModel" ngModel placeholder="Потребителско име" minlength="5" required text="text" 
+            name="username" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="usernamet.touched && usernamet.invalid">
+            <p *ngIf="usernamet.errors!['required']" class="error">
+              Потребителското име е задължителено.
+            </p>
+            <p *ngIf="usernamet.errors!['minlength']" class="error">
+                Потребителското име трябва да бъде най-малко 5 символа.
+            </p>
+          </ng-container>
+
+        <mat-form-field class="justifier">
+            <input matInput #emailt="ngModel" ngModel  minlength="5" required  placeholder="Емайл" name="email" text="email" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="emailt.touched && emailt.invalid">
+            <p *ngIf="emailt.errors!['required']" class="error">
+              Емайла е задължителен.
+            </p>
+            <p *ngIf="emailt.errors!['minlength']" class="error">
+                Емайла трябва да бъде най-малко 5 символа.
+            </p>
+          </ng-container>
+
+
+        <mat-form-field class="justifier">
+            <input matInput #fnamet="ngModel" ngModel name="first_name" minlength="5" required  placeholder="Име" text="text" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="fnamet.touched && fnamet.invalid">
+            <p *ngIf="fnamet.errors!['required']" class="error">
+              Името е задължителено.
+            </p>
+            <p *ngIf="fnamet.errors!['minlength']" class="error">
+                Името трябва да бъде най-малко 5 символа.
+            </p>
+          </ng-container>
+
+
+        <mat-form-field class="justifier">
+            <input matInput #lnamet="ngModel" ngModel name="last_name" minlength="5" required placeholder="Фамилия" text="text" class="form-input">
+        </mat-form-field>
+
+
+        <ng-container *ngIf="lnamet.touched && lnamet.invalid">
+            <p *ngIf="lnamet.errors!['required']" class="error">
+              Фамилията е задължителена.
+            </p>
+            <p *ngIf="lnamet.errors!['minlength']" class="error">
+                Фамилията трябва да бъде най-малко 5 символа.
+            </p>
+          </ng-container>
+        <mat-form-field class="justifier">
+            <input matInput #phonet="ngModel" ngModel name="phone" minlength="5" required placeholder="Телефон"   text="text" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="phonet.touched && phonet.invalid">
+            <p *ngIf="phonet.errors!['required']" class="error">
+              Телефона е задължителен.
+            </p>
+            <p *ngIf="phonet.errors!['minlength']" class="error">
+                Телефона трябва да бъде най-малко 5 символа.
+            </p>
+          </ng-container>
+
+        <mat-form-field class="justifier">
+            <input matInput  #addresst="ngModel" ngModel name="address" minlength="5" required placeholder="Адрес" text="text" class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="addresst.touched && addresst.invalid">
+            <p *ngIf="addresst.errors!['required']" class="error">
+              Телефона е задължителен.
+            </p>
+            <p *ngIf="addresst.errors!['minlength']" class="error">
+                Телефона трябва да бъде най-малко 5 символа.
+            </p>
+          </ng-container>
+
+        <mat-form-field class="justifier">
+            <input matInput placeholder="Парола" text="password" class="form-input">
+        </mat-form-field>
+        <mat-form-field class="justifier">
+            <input matInput placeholder="Повтори парола" text="password" class="form-input">
+        </mat-form-field>
+      </div>
+  
+      <div class="form-footer">
+          <button mat-raised-button class="btn custom-btn"> 
+              <mat-icon>input</mat-icon> Регистрация
+          </button> 
+      </div>
+      <div class="additional-link">
+        <a routerLink="/login"><strong>Вече имате регистрация? Вход към магазина</strong></a>
+      </div>
+    </div>
+  </div>
+</form>

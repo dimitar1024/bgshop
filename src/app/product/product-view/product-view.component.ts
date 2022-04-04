@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/interfaces/IProduct';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-product-view',
@@ -7,10 +8,13 @@ import { IProduct } from 'src/app/interfaces/IProduct';
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent implements OnInit {
-  
+
   @Input() product?: IProduct;
-  
-  constructor() { }
+  isLoggedIn: boolean
+  constructor(public authService: AuthService) {
+    this.isLoggedIn = authService.isLoggedIn;
+
+  }
 
   ngOnInit(): void {
   }

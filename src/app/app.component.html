@@ -1,50 +1,5 @@
-<app-header>
+<app-header>  </app-header>
 
-</app-header>
- 
-    
- <div class="itemselements" *ngIf="items">
-  <app-product-view *ngFor="let item of items" [product]="item"></app-product-view>
-  <div *ngIf="items.length === 0">No Themes!</div>
-</div>
-<div *ngIf="!items">
-  Loading...
-</div>
+<router-outlet></router-outlet> 
 
-
-<app-footer>
-
-</app-footer>
-<!-- 
- <div *ngFor="let d of items" class="card">
-   <div>
-     <img class="product-img" src="assets/products/{{d.model}}.jpg" />
-   </div>
-
-   <div> <p class="product-name" >{{d.name}} </p> </div>
-    <p>{{d.model}} </p>
- 
-    <div class="actions">
-      <a class="read-more"> Виж повече</a>
-
-      <div class="product-price">
-        <span   *ngIf="d.promopercentage == 0">{{d.price}}</span>
-        <span class="old-price strikethrough" *ngIf="d.promopercentage > 0">{{d.price}}</span>
-<span *ngIf="d.promopercentage >0"> {{d.price - ((d.promopercentage * d.price)/100)}} </span>
-      </div>
-    </div>
- </div> 
- <button style='background-color: red' (click)='delete()'>Delete</button>  -->
-
-
-<!-- 
- <agm-map   > 
-    <agm-marker 
-
-        [latitude]="lat" 
-
-        [longitude]="long">    
-
-    </agm-marker>
- 
-</agm-map> -->
+<app-footer> </app-footer>

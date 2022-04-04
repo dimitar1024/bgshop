@@ -10,3 +10,39 @@ mat-toolbar{
 .userpanel span{
     margin-left: 15px;;
 }
+
+.employee-nav{
+    margin-left: 150px;
+}
+
+.employee-nav a{
+    margin-left: 20px;
+}
+
+.employee-nav a:hover{
+   color: coral;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+.employee-nav a:visited{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+ }
+
+ .employee-nav a:active{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+ }
+
+ .employee-nav a{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+ }
+
+.mat-icon{
+    color: white;
+}

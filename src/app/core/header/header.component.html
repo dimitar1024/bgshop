@@ -1,11 +1,30 @@
 <mat-toolbar color="primary"> 
-      <span>БГ Маркет</span>
-      <span class="example-spacer"></span> 
-      <input type="text" /> 
+      <span>БГ Маркет</span> 
 
-      <div class="userpanel"> 
-      <span> Здавей, Пешо</span>
-      <span> Изход </span> 
+      <nav class="employee-nav" *ngIf="role == 2" >
+            <a routerLink="/products/new" > Нов Продукт </a>  
+            <a routerLink="/products" > Продукти </a>  
+            <a routerLink="/orders" > Поръчки </a>
+      </nav>
+
+      <nav class="admin-nav" *ngIf="role == 1">
+            <a> Нов служител </a>  
+            <a> Служители </a>   
+      </nav>
+ 
+      <span class="example-spacer"></span> 
+      
+      <nav class="user-nav" *ngIf="role == 3">
+            <a> Кошница </a>  
+            <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon> 
+      </nav>
+      <div class="userpanel" *ngIf="isLoggedIn"> 
+      <a> Здавей, {{empl?.username}}</a>
+      <a (click)="logout()" > Изход </a> 
+      </div>
+
+      <div class="userpanel" *ngIf="!isLoggedIn" > 
+            <a routerLink="/login"> Вход </a> 
       </div>
 
 </mat-toolbar>

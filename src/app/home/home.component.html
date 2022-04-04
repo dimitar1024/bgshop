@@ -1,0 +1,7 @@
+<div class="itemselements" *ngIf="products">
+  <app-product-view *ngFor="let prod of products" [product]="prod"></app-product-view>
+  <div *ngIf="products.length === 0">No Themes!</div>
+</div>
+<div *ngIf="!products">
+  <app-loading></app-loading>   
+</div> 
