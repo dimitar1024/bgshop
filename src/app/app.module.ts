@@ -30,11 +30,18 @@ import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './home/home.component'; 
 import { SharedModule } from './shared/shared.module';
 import {MatBadgeModule} from '@angular/material/badge'; 
+import {MatTreeModule} from '@angular/material/tree';   
+import { MatIconModule } from '@angular/material/icon';
+import { CategoryComponent } from './category/category.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { SearchComponent } from './search/search.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CategoryComponent, 
+    PagenotfoundComponent, SearchComponent
   ],
   imports: [
     BrowserModule, 
@@ -58,7 +65,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatGridListModule,
     MatFormFieldModule,
     SharedModule,
-    MatBadgeModule 
+    MatBadgeModule ,MatTreeModule,
+    MatIconModule, 
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]

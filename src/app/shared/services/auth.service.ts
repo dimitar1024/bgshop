@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/compat/firestore';
 import {  map, Observable } from 'rxjs'; 
 import { IProduct } from '../../interfaces/IProduct';
@@ -12,6 +12,7 @@ import { IEmployee } from '../../interfaces/IEmployee';
 export class AuthService {
   encryptSecretKey : string = '@ngu!@rT3st';
   empl :IEmployee[];
+  @Output() getIsLogged: EventEmitter<any> = new EventEmitter();
 
   constructor(public db: AngularFirestore,  private cookieService: CookieService) { 
 
@@ -25,7 +26,9 @@ export class AuthService {
         if (response.length > 0) {
           this.empl = response.map(item => {
             let emp = item.payload.doc.data() as IEmployee;
+            emp.docId = item.payload.doc.id;
             let val = this.encryptData(emp);
+            this.getIsLogged.emit(emp);
             this.cookieService.set('_u', val); 
             return emp;
           }
@@ -65,7 +68,7 @@ export class AuthService {
   get isLoggedIn(): boolean {
     let val = this.cookieService.get('_u');
     if (val != '') {
-      let test: IEmployee = this.decryptData(val) as IEmployee; 
+      let user: IEmployee = this.decryptData(val) as IEmployee; 
       return true;
     }
     else {

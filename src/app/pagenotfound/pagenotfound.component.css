@@ -1,0 +1,12 @@
+.wapper{
+    display: block;
+    margin: 50px;
+    height: 350px;
+}
+ 
+.image{
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+
+}

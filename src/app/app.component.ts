@@ -47,23 +47,8 @@ export class AppComponent {
      
     // db.collection('user').doc('3').set(user);
     //  db.collection('product').doc('45').set(tutorial);
- 
-
-    //this.val = this.encryptData('Test Cookie')!.toString();
-
-    // this.cookieService.set( '_u', this.val ); // To Set Cookie
-    // this.cookieValue = this.decryptData(this.cookieService.get('name')); // To Get Cookie
-    // console.log(this.cookieValue);
-  }
- 
- 
-
-  delete() {
-    if (confirm('Delete?')) {
-      this.db.collection('product').doc('4').delete();
-
-    }
-  }
+  
+  } 
 }
 
 

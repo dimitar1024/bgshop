@@ -14,13 +14,14 @@ import { NewEmployeeComponent } from './new-employee/new-employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import {MatTableModule} from '@angular/material/table'; 
 import { SharedModule } from '../shared/shared.module';
+import { UserGuard } from '../shared/guards/user.guard';
+import { AdminGuard } from '../shared/guards/admin.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }, 
-  { path: 'admin/employee/new', component: NewEmployeeComponent },
-  { path: 'admin/employees', component: EmployeesComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'profile/:id', component: ProfileComponent }
+  { path: 'admin/employee/new', canActivate: [AdminGuard],component: NewEmployeeComponent },
+  { path: 'admin/employees',canActivate: [AdminGuard], component: EmployeesComponent }, 
+  { path: 'profile/:id',  canActivate: [UserGuard], component: ProfileComponent }
 ];
 
 @NgModule({

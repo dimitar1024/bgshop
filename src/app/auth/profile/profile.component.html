@@ -1,4 +1,4 @@
-<form #regeForm="ngForm" (ngSubmit)="submitProfile(regeForm)"> 
+<form #editProfileForm="ngForm" (ngSubmit)="submitProfile()"> 
     <div class="form-wraper">
         <div class="form-container card">
           <div class="form-header">
@@ -21,7 +21,7 @@
               </ng-container>
      
             <mat-form-field class="justifier">
-                <input matInput #fnamet="ngModel" ngModel name="first_name" minlength="5" required  placeholder="Име" text="text" class="form-input">
+                <input matInput #fnamet="ngModel" ngModel name="first_name" minlength="3" required  placeholder="Име" text="text" class="form-input">
             </mat-form-field>
     
             <ng-container *ngIf="fnamet.touched && fnamet.invalid">
@@ -29,7 +29,7 @@
                   Името е задължителено.
                 </p>
                 <p *ngIf="fnamet.errors!['minlength']" class="error">
-                    Името трябва да бъде най-малко 5 символа.
+                    Името трябва да бъде най-малко 3 символа.
                 </p>
               </ng-container>
     
@@ -80,7 +80,7 @@
       
           <div class="form-footer">
               <button mat-raised-button class="btn custom-btn"> 
-                  <mat-icon>input</mat-icon> Регистрация
+                  <mat-icon>input</mat-icon> Запиши
               </button> 
           </div>
         

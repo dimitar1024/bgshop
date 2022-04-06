@@ -19,6 +19,12 @@ button,.prices{ display: inline-block;}
     font-weight: bolder;
 }
 
+.standardprice{
+    color: black;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
 mat-card-actions{
     text-align: right; 
 }
@@ -37,6 +43,6 @@ mat-card-actions{
     float: left;
 }
 
-.eppl {
-    
+mat-card-title {
+    height: 50px;
 }

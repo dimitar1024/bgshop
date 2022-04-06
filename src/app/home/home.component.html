@@ -1,6 +1,23 @@
+  
+ <div class="menu">
+   <ul>
+     <li><a routerLink="/category/1">Перални</a></li>  
+     <li><a routerLink="/category/6">Сушилни</a></li>  
+     <li><a routerLink="/category/2">Печки</a></li>  
+     <li><a routerLink="/category/5">Хладилници</a></li>  
+     <li><a routerLink="/category/8">Бойлери</a></li>  
+     <li><a routerLink="/category/3">Лаптопи</a></li>  
+     <li><a routerLink="/category/4">Компютри</a></li>   
+     <li><a routerLink="/category/7">Телефони</a></li> 
+   </ul>
+ </div>
+
+ 
+
+
 <div class="itemselements" *ngIf="products">
   <app-product-view *ngFor="let prod of products" [product]="prod"></app-product-view>
-  <div *ngIf="products.length === 0">No Themes!</div>
+  <div *ngIf="products.length === 0">No Products!</div>
 </div>
 <div *ngIf="!products">
   <app-loading></app-loading>   

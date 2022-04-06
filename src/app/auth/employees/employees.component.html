@@ -30,7 +30,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>  </th>
     <td class="buttons" mat-cell *matCellDef="let element">  
-        <a routerLink="/profile/{{element.username}}"  mat-raised-button color="primary">Промени</a> 
+        <a routerLink="/profile/{{element.docId}}"  mat-raised-button color="primary">Промени</a> 
         <button (click)="deleteEmployee(element.docId)" mat-raised-button color="warn">Изтрий</button>
          </td>
   </ng-container>

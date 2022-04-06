@@ -12,14 +12,17 @@
             <a routerLink="admin/employees" > Служители </a>   
       </nav>
  
-      <span class="example-spacer"></span> 
+      <span class="spacer"></span> 
       
       <nav class="user-nav" *ngIf="role == 3">
+            <input name="textInput" type="text" id="textInput" [(ngModel)]="search" />
+ 
+            <mat-icon (click)="Search()" matBadge="15" matBadgeColor="warn">find_replace</mat-icon>
             <a> Кошница </a>  
             <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon> 
       </nav>
       <div class="userpanel" *ngIf="isLoggedIn"> 
-      <a routerLink="/profile/{{empl?.username}}"> Здавей, {{empl?.username}}</a>
+      <a routerLink="/profile/{{empl?.docId}}"> Здравей, {{empl?.username}}</a>
       <a (click)="logout()" > Изход </a> 
       </div>
 

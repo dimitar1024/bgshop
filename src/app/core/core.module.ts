@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
  import {MatGridListModule} from '@angular/material/grid-list'; 
  import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatGridListModule,
     MatFormFieldModule,
-    RouterModule
+    RouterModule,
+    BrowserModule,
+    FormsModule
   ],
   exports:[  HeaderComponent,
     FooterComponent]

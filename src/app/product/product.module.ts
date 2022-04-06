@@ -16,12 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 import {MatSelectModule} from '@angular/material/select'; 
+import { EditProductComponent } from './edit-product/edit-product.component';
 @NgModule({
   declarations: [
     ProductViewComponent,
     NewProductComponent,
     AllProductComponent,
-    ProductTableViewComponent
+    ProductTableViewComponent, 
+    EditProductComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,6 @@ import {MatSelectModule} from '@angular/material/select';
     MatProgressBarModule,
     MatSelectModule,  
   ],
-  exports: [ProductViewComponent]
+  exports: [ProductViewComponent,EditProductComponent]
 })
 export class ProductModule { }

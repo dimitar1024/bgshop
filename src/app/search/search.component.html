@@ -1,0 +1,13 @@
+ 
+<div class="category-title">
+    <h1>Търсене</h1>
+    </div>
+    
+    
+    <div class="itemselements" *ngIf="products">
+        <app-product-view *ngFor="let prod of products" [product]="prod"></app-product-view>
+        <div *ngIf="products.length === 0">No products!</div>
+      </div>
+      <div *ngIf="!products">
+        <app-loading></app-loading>   
+      </div> 

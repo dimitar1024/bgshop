@@ -14,7 +14,7 @@
       <button class="floatleft" *ngIf="isLoggedIn" mat-button>Купи</button>  
       <div class="prices"> 
         <span *ngIf="product!.promopercentage > 0" class="oldprice">{{product?.price}} </span> 
-        <span *ngIf="product!.promopercentage == 0" class="newprice">{{product!.price}}</span> 
+        <span *ngIf="product!.promopercentage == 0" class="standardprice">{{product!.price}}</span> 
         <span *ngIf="product!.promopercentage > 0" class="newprice">{{product!.price - (product!.price * (product!.promopercentage / 100))}}</span> 
       </div> 
     </mat-card-actions>

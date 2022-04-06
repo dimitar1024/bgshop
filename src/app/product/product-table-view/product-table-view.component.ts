@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { IProduct } from 'src/app/interfaces/IProduct';
 import Swal from 'sweetalert2';
 
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductTableViewComponent implements OnInit {
   @Input() product?: IProduct;
-  constructor(public db: AngularFirestore) { }
+  constructor(public db: AngularFirestore,public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -36,5 +37,9 @@ export class ProductTableViewComponent implements OnInit {
     })
 
 
+  }
+
+  openProduct(docId:string) { 
+    this.router.navigate(['/products/' + docId]) ;
   }
 }
