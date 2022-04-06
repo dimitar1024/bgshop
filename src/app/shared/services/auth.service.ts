@@ -65,8 +65,7 @@ export class AuthService {
   get isLoggedIn(): boolean {
     let val = this.cookieService.get('_u');
     if (val != '') {
-      let test: IEmployee = this.decryptData(val) as IEmployee;
-      console.log(test);
+      let test: IEmployee = this.decryptData(val) as IEmployee; 
       return true;
     }
     else {

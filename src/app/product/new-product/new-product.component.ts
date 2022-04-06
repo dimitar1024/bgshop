@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { IProduct } from 'src/app/interfaces/IProduct';
+import { FileUpload } from 'src/app/shared/FileUpload';
+import { FileuploadService } from 'src/app/shared/services/fileupload.service';
 
 @Component({
   selector: 'app-new-product',
@@ -11,41 +13,53 @@ import { IProduct } from 'src/app/interfaces/IProduct';
 })
 export class NewProductComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
-  fileAttr:string;
-  product: IProduct ;
-  constructor(public db: AngularFirestore,public router: Router) { }
+  fileAttr: string;
+  product: IProduct;
+  constructor(public db: AngularFirestore, public router: Router, private uploadService: FileuploadService) { }
   ngOnInit(): void {
   }
 
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload | null;
+  percentage = 0;
 
-  submitProduct(newProductForm: NgForm){  
-      this.product = newProductForm.form.value as IProduct;  
-      this.db.collection('product').add(this.product);
-      this.router.navigate(['/products']) ;
+
+  submitProduct(newProductForm: NgForm) {
+
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        let path = '/uploads/' + this.currentFileUpload.file.name;
+        this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+          percentage => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+            console.log("Upload: " + this.percentage);
+            if(this.percentage == 100)
+            {
+              this.currentFileUpload = null;
+              this.product = newProductForm.form.value as IProduct;
+              this.product.imageUrl = path;
+              this.db.collection('product').add(this.product);
+               this.router.navigate(['/home']) ;
+            }
+          },
+          error => {
+            console.log(error);
+          }
+        ); 
+      }
+    }
   }
 
-  uploadFileEvt(imgFile: any) {
-    if (imgFile.target.files && imgFile.target.files[0]) {
-      this.fileAttr = '';
-      Array.from(imgFile.target.files).forEach((file: any) => {
-        this.fileAttr += file.name + ' - ';
-      });
 
-      let reader = new FileReader();
-      reader.onload = (e: any) => {
-        let image = new Image();
-        image.src = e.target.result;
-        image.onload = (rs) => {
-          let imgBase64Path = e.target.result;
-        };
+  ngAfterViewInit(): void {
+    // $('.dropify').dropify();
+  }
 
-        
-      };
-      reader.readAsDataURL(imgFile.target.files[0]);
-      // Reset if duplicate image uploaded again
-      this.fileInput.nativeElement.value = '';
-
-
-    }
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
   }
 }

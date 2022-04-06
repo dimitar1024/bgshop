@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IProduct } from 'src/app/interfaces/IProduct';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-table-view',
@@ -14,10 +15,26 @@ export class ProductTableViewComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  deleteProduct(docId:string) {
-    if (confirm('Delete?')) {
-      this.db.collection('product').doc(docId).delete();
+  deleteProduct(docId:string) { 
+    Swal.fire({
+      title: 'Сигурни ли сте че искате да изтриете този продукт',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Да',
+      cancelButtonText: 'Не'
+    }).then((result) => {
+      if (result.value) {
+        this.db.collection('product').doc(docId).delete();
+        Swal.fire(
+          'Изтрит!',
+          'Успешно изтрихте продукта',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
 
-    }
+      }
+    })
+
+
   }
 }

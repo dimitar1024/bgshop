@@ -4,14 +4,14 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IEmployee } from 'src/app/interfaces/IEmployee';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-new-employee',
+  templateUrl: './new-employee.component.html',
+  styleUrls: ['./new-employee.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class NewEmployeeComponent implements OnInit {
   user : IEmployee;
   constructor(public db: AngularFirestore,public authService: AuthService,public router: Router) { }
 
@@ -20,9 +20,9 @@ export class RegisterComponent implements OnInit {
 
   submitRegister(registerForm: NgForm){
     this.user = registerForm.form.value as IEmployee;
-    this.user.role = 3; 
-    this.db.collection('user').add(this.user);
-    this.authService.LogIn(registerForm.form.value.email,registerForm.form.value.password);  
-    this.router.navigate(['/home']) ;
+    this.user.role = 2; 
+    this.db.collection('user').add(this.user);  
+    Swal.fire('Успешно', 'Успешно записахте служител!', 'success')
+    this.router.navigate(['admin/employees']) ;
   }
 }

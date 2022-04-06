@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
       this.products = response.map(item => {
           let prod: IProduct = item.payload.doc.data() as IProduct; 
           prod.docId = item.payload.doc.id;
+          console.log(prod);
         return prod;
       }
       );

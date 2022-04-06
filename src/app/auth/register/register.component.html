@@ -88,11 +88,30 @@
           </ng-container>
 
         <mat-form-field class="justifier">
-            <input matInput placeholder="Парола" text="password" class="form-input">
+            <input matInput  #passt="ngModel" ngModel name="password" minlength="5" required placeholder="Парола" text="password" class="form-input">
         </mat-form-field>
+
+        <ng-container *ngIf="passt.touched && passt.invalid">
+          <p *ngIf="passt.errors!['required']" class="error">
+            Паролата е задължителена.
+          </p>
+          <p *ngIf="passt.errors!['minlength']" class="error">
+            Паролата трябва да бъде най-малко 5 символа.
+          </p>
+        </ng-container>
+
         <mat-form-field class="justifier">
-            <input matInput placeholder="Повтори парола" text="password" class="form-input">
+            <input matInput #confpasst="ngModel" ngModel name="confpassword" minlength="5"  required placeholder="Повтори парола" text="password" class="form-input">
         </mat-form-field>
+
+        <ng-container *ngIf="confpasst.touched && confpasst.invalid">
+          <p *ngIf="confpasst.errors!['required']" class="error">
+            Паролата е задължителена.
+          </p>
+          <p *ngIf="confpasst.errors!['minlength']" class="error">
+            Паролата трябва да бъде най-малко 5 символа.
+          </p>
+        </ng-container>
       </div>
   
       <div class="form-footer">

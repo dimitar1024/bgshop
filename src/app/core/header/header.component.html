@@ -7,9 +7,9 @@
             <a routerLink="/orders" > Поръчки </a>
       </nav>
 
-      <nav class="admin-nav" *ngIf="role == 1">
-            <a> Нов служител </a>  
-            <a> Служители </a>   
+      <nav class="employee-nav" *ngIf="role == 1">
+            <a routerLink="admin/employee/new" > Нов служител </a>  
+            <a routerLink="admin/employees" > Служители </a>   
       </nav>
  
       <span class="example-spacer"></span> 
@@ -19,7 +19,7 @@
             <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon> 
       </nav>
       <div class="userpanel" *ngIf="isLoggedIn"> 
-      <a> Здавей, {{empl?.username}}</a>
+      <a routerLink="/profile/{{empl?.username}}"> Здавей, {{empl?.username}}</a>
       <a (click)="logout()" > Изход </a> 
       </div>
 

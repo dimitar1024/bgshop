@@ -1,8 +1,9 @@
 export interface IProduct { 
    docId: string;
    name: string; 
-   model: string; 
+   model: string;  
    price: number;
    promopercentage : number;
    category: number;
+   imageUrl:string;
 }

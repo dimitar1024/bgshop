@@ -5,22 +5,31 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';  
- import {MatButtonModule} from '@angular/material/button'; 
- import {MatInputModule} from '@angular/material/input';  
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-
-const routes: Routes = [ 
-  { path: 'login', component: LoginComponent }, 
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },  
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NewEmployeeComponent } from './new-employee/new-employee.component';
+import { EmployeesComponent } from './employees/employees.component';
+import {MatTableModule} from '@angular/material/table'; 
+import { SharedModule } from '../shared/shared.module';
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }, 
+  { path: 'admin/employee/new', component: NewEmployeeComponent },
+  { path: 'admin/employees', component: EmployeesComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent }
 ];
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewEmployeeComponent,
+    EmployeesComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +38,11 @@ const routes: Routes = [
     MatIconModule,
     MatInputModule,
     BrowserAnimationsModule,
-    FormsModule  ,
+    MatFormFieldModule,
+    FormsModule,
+    MatIconModule,
+    MatTableModule,
+    SharedModule
 
   ],
   exports: [RouterModule]

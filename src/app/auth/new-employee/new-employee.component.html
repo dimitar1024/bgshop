@@ -1,4 +1,4 @@
-<form #regeForm="ngForm" (ngSubmit)="submitProfile(regeForm)"> 
+<form #regeForm="ngForm" (ngSubmit)="submitRegister(regeForm)"> 
     <div class="form-wraper">
         <div class="form-container card">
           <div class="form-header">
@@ -19,7 +19,21 @@
                     Потребителското име трябва да бъде най-малко 5 символа.
                 </p>
               </ng-container>
-     
+    
+            <mat-form-field class="justifier">
+                <input matInput #emailt="ngModel" ngModel  minlength="5" required  placeholder="Емайл" name="email" text="email" class="form-input">
+            </mat-form-field>
+    
+            <ng-container *ngIf="emailt.touched && emailt.invalid">
+                <p *ngIf="emailt.errors!['required']" class="error">
+                  Емайла е задължителен.
+                </p>
+                <p *ngIf="emailt.errors!['minlength']" class="error">
+                    Емайла трябва да бъде най-малко 5 символа.
+                </p>
+              </ng-container>
+    
+    
             <mat-form-field class="justifier">
                 <input matInput #fnamet="ngModel" ngModel name="first_name" minlength="5" required  placeholder="Име" text="text" class="form-input">
             </mat-form-field>
@@ -66,16 +80,38 @@
     
             <ng-container *ngIf="addresst.touched && addresst.invalid">
                 <p *ngIf="addresst.errors!['required']" class="error">
-                  Адреса е задължителен.
+                  Телефона е задължителен.
                 </p>
                 <p *ngIf="addresst.errors!['minlength']" class="error">
-                    Адреса трябва да бъде най-малко 5 символа.
+                    Телефона трябва да бъде най-малко 5 символа.
                 </p>
               </ng-container>
     
-           
+            <mat-form-field class="justifier">
+                <input matInput  #passt="ngModel" ngModel name="password" minlength="5" required placeholder="Парола" text="password" class="form-input">
+            </mat-form-field>
     
-           
+            <ng-container *ngIf="passt.touched && passt.invalid">
+              <p *ngIf="passt.errors!['required']" class="error">
+                Паролата е задължителена.
+              </p>
+              <p *ngIf="passt.errors!['minlength']" class="error">
+                Паролата трябва да бъде най-малко 5 символа.
+              </p>
+            </ng-container>
+    
+            <mat-form-field class="justifier">
+                <input matInput #confpasst="ngModel" ngModel name="confpassword" minlength="5"  required placeholder="Повтори парола" text="password" class="form-input">
+            </mat-form-field>
+    
+            <ng-container *ngIf="confpasst.touched && confpasst.invalid">
+              <p *ngIf="confpasst.errors!['required']" class="error">
+                Паролата е задължителена.
+              </p>
+              <p *ngIf="confpasst.errors!['minlength']" class="error">
+                Паролата трябва да бъде най-малко 5 символа.
+              </p>
+            </ng-container>
           </div>
       
           <div class="form-footer">

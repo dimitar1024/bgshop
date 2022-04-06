@@ -1,85 +1,95 @@
 <form #productForm="ngForm" (ngSubmit)="submitProduct(productForm)">
-    <div class="form-wraper">
-      <div class="form-container card">
-        <div class="form-header">
-        </div>
-  
-        <div class="form-body">
-          <mat-form-field class="justifier">
-            <input matInput #emailt="ngModel" placeholder="Продуктов код" required name="model" ngModel id="model" text="text"
-              minlength="5" class="form-input">
-          </mat-form-field>
-  
-          <ng-container *ngIf="emailt.touched && emailt.invalid">
-            <p *ngIf="emailt.errors!['required']" class="error">
-                Продуктовия код е задължителен.
-            </p>
-            <p *ngIf="emailt.errors!['minlength']" class="error">
-                Продуктовия код трябва да бъде най-малко 5 символа.
-            </p>
-          </ng-container>
-  
-          <mat-form-field class="justifier">
-            <input matInput #passwordt="ngModel" placeholder="Име" required ngModel name="name" minlength="5"
-              text="text" class="form-input">
-          </mat-form-field>
-  
-          <ng-container *ngIf="passwordt.touched && passwordt.invalid">
-            <p *ngIf="passwordt.errors!['required']" class="error">
-              Името е задължителено.
-            </p>
-            <p *ngIf="passwordt.errors!['minlength']" class="error">
-              Името трябва да бъде най-малко 5 символа.
-            </p>
-          </ng-container>
+  <div class="form-wraper">
+    <div class="form-container card">
+      <div class="form-header">
+      </div>
+
+      <div class="form-body">
+        
+        <mat-form-field class="justifier">
+          <input matInput #passwordt="ngModel" placeholder="Име" required ngModel name="name" minlength="5" text="text"
+            class="form-input">
+        </mat-form-field>
+
+        <ng-container *ngIf="passwordt.touched && passwordt.invalid">
+          <p *ngIf="passwordt.errors!['required']" class="error">
+            Името е задължителено.
+          </p>
+          <p *ngIf="passwordt.errors!['minlength']" class="error">
+            Името трябва да бъде най-малко 5 символа.
+          </p>
+        </ng-container>
+
+        <mat-form-field class="justifier">
+          <textarea matInput #emailt="ngModel" placeholder="Описание" required name="model" ngModel id="model"
+            text="text" minlength="5" class="form-input"></textarea>
+        </mat-form-field>
+
+        <ng-container *ngIf="emailt.touched && emailt.invalid">
+          <p *ngIf="emailt.errors!['required']" class="error">
+            Описанието е задължителено.
+          </p>
+          <p *ngIf="emailt.errors!['minlength']" class="error">
+            Описанието трябва да бъде най-малко 5 символа.
+          </p>
+        </ng-container>
 
 
-          <mat-form-field class="justifier">
-            <input matInput #pricet="ngModel" placeholder="Цена" ngModel name="price" required
-              text="text" class="form-input">
-          </mat-form-field>
-  
-          <ng-container *ngIf="pricet.touched && pricet.invalid">
-            <p *ngIf="pricet.errors!['required']" class="error">
-              Цената е задължителена.
-            </p> 
-          </ng-container>
+        <mat-form-field class="justifier">
+          <input matInput #pricet="ngModel" placeholder="Цена" ngModel name="price" required text="text"
+            class="form-input">
+        </mat-form-field>
 
-          <mat-form-field class="justifier">
-            <input matInput #promopercentaget="ngModel" placeholder="Процент намаление" ngModel name="promopercentage"
-              text="text" class="form-input">
-          </mat-form-field>
+        <ng-container *ngIf="pricet.touched && pricet.invalid">
+          <p *ngIf="pricet.errors!['required']" class="error">
+            Цената е задължителена.
+          </p>
+        </ng-container>
 
-          <mat-form-field class="justifier">
-            <input matInput #categoryt="ngModel" placeholder="Категория" ngModel name="category" required
-              text="text" class="form-input">
-          </mat-form-field>
-  
-          <ng-container *ngIf="categoryt.touched && categoryt.invalid">
-            <p *ngIf="categoryt.errors!['required']" class="error">
-              Цената е задължителена.
-            </p> 
-          </ng-container>
+        <mat-form-field class="justifier">
+          <input matInput #promopercentaget="ngModel" placeholder="Процент намаление" ngModel name="promopercentage"
+            text="text" class="form-input">
+        </mat-form-field>
+ 
+        <mat-form-field class="justifier" appearance="fill">
+          <mat-label>Категория</mat-label>
+          <mat-select #categoryt="ngModel" name="category" ngModel  required>
+            <mat-option [value]="1">Перални</mat-option>
+            <mat-option [value]="2">Печки</mat-option>
+            <mat-option [value]="3">Лаптопи</mat-option>
+            <mat-option [value]="4">Компютри</mat-option>
+            <mat-option [value]="5">Хладилници</mat-option>
+            <mat-option [value]="6">Сушилни</mat-option>
+            <mat-option [value]="7">Телефони</mat-option>
+            <mat-option [value]="8">Бойлери</mat-option>
+          </mat-select>
+        </mat-form-field>
+ 
+        <ng-container *ngIf="categoryt.touched && categoryt.invalid">
+          <p *ngIf="categoryt.errors!['required']" class="error">
+            Категорията е задължителена.
+          </p>
+        </ng-container>
 
 
-          <input
-          type="file"
-          ngModel #filet="ngModel" 
-          #fileInput
-          id="uploadFile"
-          (change)="uploadFileEvt($event)"
-          name="uploadFile"
-          multiple="multiple"
-          accept="image/*"
-        />
-    
-        </div>
-  
-        <div class="form-footer">
-          <button [disabled]="productForm.invalid" mat-raised-button class="btn custom-btn">
-            <mat-icon>input</mat-icon> Запиши
-          </button>
+        <input type="file" #filet="ngModel" required ngModel name="photo" class="text-nowrap text-truncate dropify" (change)="selectFile($event)" />
+        <ng-container *ngIf="filet.touched && filet.invalid">
+          <p *ngIf="filet.errors!['required']" class="error">
+            Снимката е задължителена.
+          </p>
+        </ng-container>
+        
+        
+        <div *ngIf="currentFileUpload">
+          <mat-progress-bar mode="determinate" value="{{ percentage }}"></mat-progress-bar>
         </div> 
       </div>
+
+      <div class="form-footer">
+        <button [disabled]="productForm.invalid" mat-raised-button class="btn custom-btn">
+          <mat-icon>input</mat-icon> Запиши
+        </button>
+      </div>
     </div>
-  </form>
+  </div>
+</form>

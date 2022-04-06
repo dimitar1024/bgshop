@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { map, Observable } from 'rxjs';
 import { IProduct } from 'src/app/interfaces/IProduct';
+import { FileuploadService } from 'src/app/shared/services/fileupload.service';
 
 @Component({
   selector: 'app-all-product',
@@ -8,13 +11,13 @@ import { IProduct } from 'src/app/interfaces/IProduct';
   styleUrls: ['./all-product.component.css']
 })
 export class AllProductComponent implements OnInit {
-
-  constructor(public db: AngularFirestore) {
-this.getAllProducts();
-  }
-
+   
+  constructor(public db: AngularFirestore ) {
+    this.getAllProducts();
+  } 
   products: IProduct[];
-  ngOnInit(): void {
+
+  ngOnInit(): void { 
   }
 
 
@@ -29,10 +32,4 @@ this.getAllProducts();
     })
   }
 
-  deleteProduct(docId:string) {
-    if (confirm('Delete?')) {
-      this.db.collection('product').doc(docId).delete();
-
-    }
-  }
 }
