@@ -3,3 +3,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.itemselements{
+    display: flex;
+    flex-flow: row wrap;
+} 
+
+.category-title{ 
+    box-shadow:  5px 5px 8px gray;
+    width: 95%;
+    margin: 1%;
+    padding: 20px 20px; 
+}
+
+h1{
+    line-height: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}

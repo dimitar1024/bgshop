@@ -5,3 +5,7 @@
 .tableview{
     display: inline-block;
 }
+
+.description{
+    width:  80%;
+}

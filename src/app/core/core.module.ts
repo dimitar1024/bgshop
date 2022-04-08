@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import {MatBadgeModule} from '@angular/material/badge'; 
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     RouterModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    MatBadgeModule
   ],
   exports:[  HeaderComponent,
     FooterComponent]

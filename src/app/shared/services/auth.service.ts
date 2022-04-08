@@ -39,7 +39,7 @@ export class AuthService {
 
   LogOut()
   {
-    this.cookieService.delete('_u'); 
+    this.cookieService.deleteAll(); 
   }
 
   encryptData(data: IEmployee): string {

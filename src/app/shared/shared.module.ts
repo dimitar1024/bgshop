@@ -7,11 +7,19 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
+import { CartComponent } from './cart/cart.component';  
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select'; 
 
 
 @NgModule({
   declarations: [
-    LoadingComponent
+    LoadingComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +27,10 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore 
     AngularFireAuthModule, // auth 
-    AngularFireStorageModule, // storage
+    AngularFireStorageModule, // storage    
+    MatCardModule  ,
+    MatFormFieldModule,
+    FormsModule,MatSelectModule
   ], 
   exports: [LoadingComponent]
 })

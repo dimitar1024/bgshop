@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/interfaces/IProduct';
 import Swal from 'sweetalert2';
 
@@ -11,9 +13,13 @@ import Swal from 'sweetalert2';
 })
 export class ProductTableViewComponent implements OnInit {
   @Input() product?: IProduct;
-  constructor(public db: AngularFirestore,public router: Router) { }
+  profileUrl: Observable<string | null>;
+  constructor(public db: AngularFirestore,public router: Router,private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
+    let url: string = this.product!.imageUrl;
+    const ref = this.storage.ref(url);
+    this.profileUrl = ref.getDownloadURL();
   }
   
   deleteProduct(docId:string) { 

@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent }, 
   { path: 'admin/employee/new', canActivate: [AdminGuard],component: NewEmployeeComponent },
   { path: 'admin/employees',canActivate: [AdminGuard], component: EmployeesComponent }, 
-  { path: 'profile/:id',  canActivate: [UserGuard], component: ProfileComponent }
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@ import { IProduct } from '../interfaces/IProduct';
 import {FlatTreeControl} from '@angular/cdk/tree'; 
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import { identifierName } from '@angular/compiler';
-
+/*
 interface CategoryNode {
   id: number;
   name: string;
@@ -50,8 +50,8 @@ const TREE_DATA: CategoryNode[] = [
       },
       
     ],
-  },*/
-];
+  },
+];*/
 
 
 
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
   constructor(public db: AngularFirestore) {
     this.getAllProducts(); 
   
-    this.dataSource.data = TREE_DATA;
+    //this.dataSource.data = TREE_DATA;
   }
  
   products: IProduct[];
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  private _transformer = (n: CategoryNode, level: number) => {
+ /* private _transformer = (n: CategoryNode, level: number) => {
     return {
       expandable: !!n.children && n.children.length > 0,
       name: n.name,
@@ -111,5 +111,5 @@ export class HomeComponent implements OnInit {
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
  
   //hasNoContent = (_: number, node: ExampleFlatNode) => node.id;
- 
+ */
 }

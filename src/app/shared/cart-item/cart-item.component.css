@@ -1,0 +1,21 @@
+.tableview{
+    display: inline-block;
+    margin-left: 50px;
+    width: 200px;
+}
+
+.descr{
+    width: 200px;
+}
+
+
+.price, .name{
+    color: black;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+
+.product-image{
+    height: 100px;
+}

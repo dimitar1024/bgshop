@@ -16,3 +16,8 @@ h1{
 .itemselements{
     display: flex;
 }
+
+.noproducts{
+    font-size: 30px;
+    margin: 30px;
+}

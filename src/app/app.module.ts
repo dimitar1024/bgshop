@@ -34,7 +34,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { CategoryComponent } from './category/category.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { SearchComponent } from './search/search.component'; 
+import { SearchComponent } from './search/search.component';  
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { SearchComponent } from './search/search.component';
     MatFormFieldModule,
     SharedModule,
     MatBadgeModule ,MatTreeModule,
-    MatIconModule, 
+    MatIconModule,  
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]

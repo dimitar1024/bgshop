@@ -1,5 +1,5 @@
 <mat-toolbar color="primary"> 
-      <span>БГ Маркет</span> 
+      <span routerLink="/home" >БГ Маркет</span> 
 
       <nav class="employee-nav" *ngIf="role == 2" >
             <a routerLink="/products/new" > Нов Продукт </a>  
@@ -12,14 +12,12 @@
             <a routerLink="admin/employees" > Служители </a>   
       </nav>
  
-      <span class="spacer"></span> 
-      
+      <span class="spacer"></span>  
       <nav class="user-nav" *ngIf="role == 3">
-            <input name="textInput" type="text" id="textInput" [(ngModel)]="search" />
+            <input name="textInput" placeholder="Търсене..." type="text" id="textInput" [(ngModel)]="search" />
  
-            <mat-icon (click)="Search()" matBadge="15" matBadgeColor="warn">find_replace</mat-icon>
-            <a> Кошница </a>  
-            <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon> 
+            <mat-icon id="findicon"  (click)="Search()">manage_search</mat-icon> 
+            <mat-icon routerLink="/cart" id="cart" matBadge="{{cartCount}}" matBadgeColor="warn">shopping_cart</mat-icon> 
       </nav>
       <div class="userpanel" *ngIf="isLoggedIn"> 
       <a routerLink="/profile/{{empl?.docId}}"> Здравей, {{empl?.username}}</a>

@@ -1,0 +1,8 @@
+ 
+  <div class="cartlist" *ngIf="products"> 
+    <app-cart-item *ngFor="let prod of products" [product]="prod"></app-cart-item>
+    <div *ngIf="products.length === 0">No Products!</div>
+  </div>
+  <div *ngIf="!products">
+    <app-loading></app-loading>
+  </div>

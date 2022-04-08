@@ -5,17 +5,29 @@
    <img class="product-image"  [src]="profileUrl | async" />
     <mat-card-content>
       <p class="eppl">
-       <!-- {{product?.model}}   -->
+       {{product?.model}}  
       </p>
     </mat-card-content>
     <mat-divider></mat-divider>
-    <mat-card-actions>
-      <button class="floatleft" (click)="openPRoduct(product?.docId)" mat-button>Виж</button>
-      <button class="floatleft" *ngIf="isLoggedIn" (click)="addToCart(product?.docId)" mat-button>Купи</button>  
+    <mat-card-actions> 
       <div class="prices"> 
         <span *ngIf="product!.promopercentage > 0" class="oldprice">{{product?.price}} </span> 
         <span *ngIf="product!.promopercentage == 0" class="standardprice">{{product!.price}}</span> 
         <span *ngIf="product!.promopercentage > 0" class="newprice">{{product!.price - (product!.price * (product!.promopercentage / 100))}}</span> 
       </div> 
     </mat-card-actions>
+</mat-card> 
+ 
+
+
+<mat-card class="product">
+    <mat-card-header>
+      <mat-card-title>Коментари</mat-card-title>
+    </mat-card-header>  
+    <mat-card-content>
+      <p class="eppl">
+       {{product?.model}}  
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider> 
 </mat-card> 

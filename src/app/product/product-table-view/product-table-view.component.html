@@ -1,13 +1,13 @@
 <mat-card class="product"> 
-    <div class="tableview">
-        <img class="product-image" src="assets/products/{{product?.model}}.jpg">
-    </div>
     <div class="tableview"> 
+        <img class="product-image"  [src]="profileUrl | async" />
+    </div>
+    <div class="tableview description"> 
         <ul>
-            <li><strong>Име</strong>{{product?.name}} </li>
-            <li><strong>Модел</strong>{{product?.model}} </li>
-            <li><strong>Цена</strong>{{product?.price}} </li>
-            <li><strong>Процент намаление</strong>{{product?.promopercentage}} </li>
+            <li><strong>Име</strong> {{product?.name}} </li>
+            <li><strong>Модел</strong> {{product?.model}} </li>
+            <li><strong>Цена</strong> {{product?.price}} </li>
+            <li><strong>Процент намаление</strong> {{product?.promopercentage}} </li>
         </ul> 
     </div>
     <div class="tableview"> 

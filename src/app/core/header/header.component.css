@@ -38,3 +38,22 @@ a:hover{
 .userpanel a{
     margin-left: 20px;
 }
+
+
+#textInput{
+    width: 300px;
+    height: 25px;
+    margin: 30px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+#findicon{
+    transform: scale(2);
+    margin-right: 25px; 
+}
+
+#cart{
+    transform: scale(1.4);
+    margin-right: 25px; 
+}

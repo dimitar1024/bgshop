@@ -1,0 +1,13 @@
+.cartlist > * {
+    margin: 15px;
+    width: 90%;
+}
+
+.cartlist{
+    width: 98%;
+    margin: 1%;
+}
+
+app-product-table-view{
+    width: 95%;
+}

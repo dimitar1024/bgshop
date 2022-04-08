@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/interfaces/IProduct';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-product-view',
@@ -13,17 +15,26 @@ export class ProductViewComponent implements OnInit {
 
   @Input() product?: IProduct;
   profileUrl: Observable<string | null>;
-  
+
   isLoggedIn: boolean
-  constructor(public authService: AuthService, private storage: AngularFireStorage) {
+  constructor(public authService: AuthService,public router: Router, private storage: AngularFireStorage, public cartService: CartService) {
     this.isLoggedIn = authService.isLoggedIn;
 
   }
 
-  ngOnInit(): void { 
-    let url : string  =this.product!.imageUrl;
-    const ref = this.storage.ref(url);  
+  ngOnInit(): void {
+    let url: string = this.product!.imageUrl;
+    const ref = this.storage.ref(url);
     this.profileUrl = ref.getDownloadURL();
+  }
+
+  addToCart(prodid: any): void {
+    this.cartService.AddToCart(prodid, 1);
+  }
+
+
+  openPRoduct(prodid: any) :void{
+    this.router.navigate(['/products/details/' + prodid]) ;
   }
 
 }

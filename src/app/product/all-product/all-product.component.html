@@ -1,4 +1,4 @@
-<div class="itemselements" *ngIf="products"> 
+<div class="cartlist" *ngIf="products"> 
   <app-product-table-view *ngFor="let prod of products" [product]="prod"></app-product-table-view>
   <div *ngIf="products.length === 0">No Products!</div>
 </div>
