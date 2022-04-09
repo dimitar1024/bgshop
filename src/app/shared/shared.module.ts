@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select'; 
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -30,8 +31,10 @@ import {MatSelectModule} from '@angular/material/select';
     AngularFireStorageModule, // storage    
     MatCardModule  ,
     MatFormFieldModule,
-    FormsModule,MatSelectModule
+    FormsModule,MatSelectModule,
+    
+    MatButtonModule,
   ], 
-  exports: [LoadingComponent]
+  exports: [LoadingComponent, CartItemComponent]
 })
 export class SharedModule { }

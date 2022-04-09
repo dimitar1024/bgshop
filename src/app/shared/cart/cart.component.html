@@ -1,6 +1,18 @@
  
   <div class="cartlist" *ngIf="products"> 
-    <app-cart-item *ngFor="let prod of products" [product]="prod"></app-cart-item>
+    <app-cart-item *ngFor="let prod of products" [isReadOnly] = false [qty]="1" [product]="prod"></app-cart-item>
+
+    <div class="address">
+      <div class="info">
+      <strong>Адрес на доставка</strong>
+        <p>{{user.address}}</p>
+        <strong>Начин на плащане</strong>
+        <p>наложен платеж</p>
+      </div>
+      <div class="info buybtn">
+        <button (click)="SubmitCart()" class="buy" mat-raised-button color="warn">Купи</button>
+      </div>
+    </div>
     <div *ngIf="products.length === 0">No Products!</div>
   </div>
   <div *ngIf="!products">

@@ -16,6 +16,8 @@ import {MatTableModule} from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { UserGuard } from '../shared/guards/user.guard';
 import { AdminGuard } from '../shared/guards/admin.guard';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }, 
@@ -29,7 +31,9 @@ const routes: Routes = [
     RegisterComponent,
     ProfileComponent,
     NewEmployeeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    OrdersComponent,
+    OrderdetailsComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,8 @@ const routes: Routes = [
     FormsModule,
     MatIconModule,
     MatTableModule,
-    SharedModule
+    SharedModule,
+    
 
   ],
   exports: [RouterModule]

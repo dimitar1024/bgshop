@@ -1,3 +1,25 @@
 .cartlist > * {
     margin: 15px;
 }
+
+
+.address{
+    box-shadow:  5px 5px 8px gray;
+    width: 95%;
+    margin: 1%;
+    padding: 20px 20px; 
+}
+
+.info{
+    display: inline-block;
+}
+
+.buy{
+    float: right;
+    margin-right: 30px;
+}
+
+
+.buybtn{
+    width: 80%;
+}

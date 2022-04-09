@@ -87,3 +87,39 @@
         </div>
       </div>
     </form>
+
+
+    <div class="orders" *ngIf="orders">
+
+      <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+  
+          <ng-container matColumnDef="first_name">
+              <th mat-header-cell *matHeaderCellDef> Потребител </th>
+              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="last_name">
+              <th mat-header-cell *matHeaderCellDef> Статус </th>
+              <td mat-cell *matCellDef="let element"> <span *ngIf="element.status== 1">Нова Поръчка</span> </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef> Дата </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td class="buttons" mat-cell *matCellDef="let element">
+                  
+  
+              </td>
+          </ng-container>
+  
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <div *ngIf="orders.length === 0">No Employees!</div>
+  </div>

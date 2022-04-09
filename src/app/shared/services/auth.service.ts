@@ -29,6 +29,7 @@ export class AuthService {
             emp.docId = item.payload.doc.id;
             let val = this.encryptData(emp);
             this.getIsLogged.emit(emp);
+            this.cookieService.delete('_u');
             this.cookieService.set('_u', val); 
             return emp;
           }

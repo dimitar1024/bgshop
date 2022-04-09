@@ -13,10 +13,11 @@
       </nav>
  
       <span class="spacer"></span>  
-      <nav class="user-nav" *ngIf="role == 3">
+      <nav class="user-nav">
             <input name="textInput" placeholder="Търсене..." type="text" id="textInput" [(ngModel)]="search" />
- 
             <mat-icon id="findicon"  (click)="Search()">manage_search</mat-icon> 
+      </nav>
+      <nav class="user-nav" *ngIf="role == 3"> 
             <mat-icon routerLink="/cart" id="cart" matBadge="{{cartCount}}" matBadgeColor="warn">shopping_cart</mat-icon> 
       </nav>
       <div class="userpanel" *ngIf="isLoggedIn"> 

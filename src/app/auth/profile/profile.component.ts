@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IEmployee } from 'src/app/interfaces/IEmployee'; 
+import { IOrder } from 'src/app/interfaces/IOrder';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,11 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
 
-
+  displayedColumns: string[] = ['first_name', 'last_name', 'username', 'actions'];
   @ViewChild('editProfileForm') editProfileForm: NgForm;
   emplDocId: string;
   constructor(public db: AngularFirestore, private activatedRoute: ActivatedRoute,public router: Router) { }
-
+  orders: IOrder[];
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe(params => {
@@ -34,11 +35,24 @@ export class ProfileComponent implements OnInit {
               username: emp.username,
               address: emp.address,
             })
+
+           this.getAllOrders(response.payload.id);
           });
         });
 
     })
   }
+
+  getAllOrders(userId :string) {
+    this.db.collection('order', ref => ref.where('userid', '==', userId)).snapshotChanges().subscribe((response) => {
+      this.orders = response.map(item => {
+        let ord: IOrder = item.payload.doc.data() as IOrder; 
+        return ord;
+      }  );
+    console.log(this.orders);
+    })
+  }
+
 
   submitProfile() {
     this.db.doc('user/' + this.emplDocId).update({

@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { ICartItem } from 'src/app/interfaces/ICartItem';
+import { IProduct } from 'src/app/interfaces/IProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -37,32 +38,70 @@ export class CartService {
   }
 
 
-  AddToCart(productid: string, qty: number) { 
-    let prod = { docId: productid, qty: qty } as ICartItem;
-     
+  AddToCart(productid: string) {
+    let prod = { docId: productid, qty: 1 } as ICartItem;
+
     let listStr: string = this.cookieService.get(this.cart);
     if (listStr == '') {
       let arr: ICartItem[] = [];
       arr.push(prod);
       this.getCount.emit(1);
-      this.cookieService.set(this.cart,JSON.stringify(arr)); 
+      this.cookieService.set(this.cart, JSON.stringify(arr));
 
-     console.log(this.cookieService.get(this.cart));
-    }else{
-      var obj = JSON.parse(listStr); 
-      obj.push(prod);
+      console.log(this.cookieService.get(this.cart));
+    } else {
+      let obj = JSON.parse(listStr) as ICartItem[];
+
+      let existingProd: ICartItem;
+      let isExist: boolean = false;
+      for (let i = 0; i < obj.length; i++) {
+        if (obj[i].docId == productid) {
+          existingProd = obj[i] as ICartItem;
+          existingProd.qty = existingProd.qty + 1;
+          obj.splice(i, 1);
+          obj.push(existingProd);
+          isExist = true;
+        }
+      }
+
+      if (isExist == false) {
+        obj.push(prod);
+      }
       this.getCount.emit(obj.length);
-      this.cookieService.set(this.cart,JSON.stringify(obj)); 
+      this.cookieService.set(this.cart, JSON.stringify(obj));
       console.log(this.cookieService.get(this.cart));
     }
-  } 
+  }
+
+
+  RefreshItem(productid: string, qty: number) { 
+    let listStr: string = this.cookieService.get(this.cart); 
+    let obj = JSON.parse(listStr) as ICartItem[];
+
+    let existingProd: ICartItem;
+    let isExist: boolean = false;
+    for (let i = 0; i < obj.length; i++) {
+      if (obj[i].docId == productid) {
+        existingProd = obj[i] as ICartItem;
+        existingProd.qty = existingProd.qty + 1;
+        obj.splice(i, 1);
+        obj.push(existingProd);
+        isExist = true;
+      }
+    }
+
+    this.getCount.emit(obj.length);
+    this.cookieService.set(this.cart, JSON.stringify(obj));
+    console.log(this.cookieService.get(this.cart));
+  }
+
+
   Clear() {
     this.cookieService.delete(this.cart);
   }
 
-  GetCart() : string
-  {
-    return this.cookieService.get(this.cart); 
+  GetCart(): string {
+    return this.cookieService.get(this.cart);
   }
 
 }

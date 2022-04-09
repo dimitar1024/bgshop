@@ -1,7 +1,8 @@
 
 .product{
-    width: 96%;
+    width: 80%;
     margin: 15px;
+    margin-left: 10%;
     box-shadow:  5px 5px 8px gray;
 }
   
@@ -52,3 +53,30 @@ mat-card-title {
 mat-card-header{
     text-align: center;
 }
+
+.right{
+    float: right;
+}
+
+.comment{
+border-bottom: 1px gray dashed;
+}
+
+.comment p {
+    font-size: 20px;
+}
+
+#comment-input{
+    width: 84% !important;
+    margin: 20px;;
+}
+
+.icomm{
+    width: 80%;
+}
+
+.custom-btn{
+    background-color: #3F51B5;
+    color: white;
+}
+

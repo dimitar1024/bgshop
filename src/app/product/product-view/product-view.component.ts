@@ -26,10 +26,15 @@ export class ProductViewComponent implements OnInit {
     let url: string = this.product!.imageUrl;
     const ref = this.storage.ref(url);
     this.profileUrl = ref.getDownloadURL();
+
+    this.authService.getIsLogged.subscribe((u) => {
+      this.isLoggedIn = true;
+    });
+
   }
 
   addToCart(prodid: any): void {
-    this.cartService.AddToCart(prodid, 1);
+    this.cartService.AddToCart(prodid);
   }
 
 

@@ -12,9 +12,9 @@
          </div> 
     </div>
     <div class="tableview">
-         <mat-form-field appearance="fill">
+         <!-- <mat-form-field appearance="fill">
             <mat-label>Брой</mat-label>
-            <mat-select [value]="1" (selectionChange)="OnChange($event)">
+            <mat-select (value)="selected" (selectionChange)="OnChange($event)">
                 <mat-option value="0">0</mat-option>
                 <mat-option value="1">1</mat-option>
                 <mat-option value="2">2</mat-option>
@@ -27,10 +27,14 @@
                 <mat-option value="9">9</mat-option>
                 <mat-option value="10">10</mat-option>
             </mat-select>
-          </mat-form-field>
-    </div>
+          </mat-form-field> -->
+
+
+          <input *ngIf="isReadOnly == false" matInput type="number" (change)="OnChange($event.target)" value="{{qty}}" />
+        <span  *ngIf="isReadOnly">{{qty}}</span>
+        </div>
 
     <div class="tableview">
-        <span class="name"> {{total}}</span> 
+        <span class="name">  {{total}}</span> 
     </div>
 </mat-card> 

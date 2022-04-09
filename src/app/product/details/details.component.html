@@ -1,33 +1,59 @@
 <mat-card class="product">
-    <mat-card-header>
-      <mat-card-title>{{product?.name}}</mat-card-title>
-    </mat-card-header> 
-   <img class="product-image"  [src]="profileUrl | async" />
-    <mat-card-content>
-      <p class="eppl">
-       {{product?.model}}  
-      </p>
-    </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-actions> 
-      <div class="prices"> 
-        <span *ngIf="product!.promopercentage > 0" class="oldprice">{{product?.price}} </span> 
-        <span *ngIf="product!.promopercentage == 0" class="standardprice">{{product!.price}}</span> 
-        <span *ngIf="product!.promopercentage > 0" class="newprice">{{product!.price - (product!.price * (product!.promopercentage / 100))}}</span> 
-      </div> 
-    </mat-card-actions>
-</mat-card> 
- 
+  <mat-card-header>
+    <mat-card-title>{{product?.name}}</mat-card-title>
+  </mat-card-header>
+  <img class="product-image" [src]="profileUrl | async" />
+  <mat-card-content>
+    <p class="eppl">
+      {{product?.model}}
+    </p>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <div class="prices">
+      <span *ngIf="product!.promopercentage > 0" class="oldprice">{{product?.price}} </span>
+      <span *ngIf="product!.promopercentage == 0" class="standardprice">{{product!.price}}</span>
+      <span *ngIf="product!.promopercentage > 0" class="newprice">{{product!.price - (product!.price *
+        (product!.promopercentage / 100))}}</span>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
 
 
 <mat-card class="product">
-    <mat-card-header>
-      <mat-card-title>Коментари</mat-card-title>
-    </mat-card-header>  
-    <mat-card-content>
-      <p class="eppl">
-       {{product?.model}}  
-      </p>
-    </mat-card-content>
-    <mat-divider></mat-divider> 
-</mat-card> 
+  <mat-card-header>
+    <mat-card-title>Коментари</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="cartlist" *ngFor="let comment of comments">
+      <div class="comment">
+        <p>{{comment.comment}}</p>
+        <strong>{{comment.username}}</strong>
+        <strong class="right">{{comment.date}}</strong>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <mat-card-footer>
+    <form #commentForm="ngForm" (ngSubmit)="submitComment(commentForm)">
+      <mat-form-field class="icomm" id="comment-input" class="justifier">
+        <textarea matInput #commt="ngModel"  placeholder="Оставете вашият коментар" required name="comment" ngModel
+            text="text" minlength="5" class="form-input"></textarea>
+      </mat-form-field>
+
+      <ng-container *ngIf="commt.touched && commt.invalid">
+        <p *ngIf="commt.errors!['required']" class="error">
+          Описанието е задължителено.
+        </p>
+        <p *ngIf="commt.errors!['minlength']" class="error">
+          Описанието трябва да бъде най-малко 5 символа.
+        </p>
+      </ng-container>
+      <button [disabled]="commentForm.invalid" mat-raised-button class="btn custom-btn">
+        <mat-icon>input</mat-icon> Запиши
+      </button>
+    </form>
+  </mat-card-footer>
+</mat-card>

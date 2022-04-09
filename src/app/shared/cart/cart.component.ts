@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { ICartItem } from 'src/app/interfaces/ICartItem';
+import { IEmployee } from 'src/app/interfaces/IEmployee';
+import { IOrder } from 'src/app/interfaces/IOrder';
 import { IProduct } from 'src/app/interfaces/IProduct';
+import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -11,9 +16,11 @@ import { CartService } from '../services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public cartService: CartService, public db: AngularFirestore) { }
+  constructor(public cartService: CartService, public db: AngularFirestore, public router: Router, public auth : AuthService) { }
   products: IProduct[];
+  user: IEmployee;
   ngOnInit(): void {
+    this.user = this.auth.currentUser;
     let s = this.cartService.GetCart();
     if (s != '') {
       var obj = JSON.parse(s) as ICartItem[];
@@ -31,9 +38,28 @@ export class CartComponent implements OnInit {
           return prod;
         });
 
-        this.products = vals.filter(item => prods.includes(item.docId));
-        console.log(this.products);
+        this.products = vals.filter(item => prods.includes(item.docId)); 
       });
     }
   } 
+
+
+  SubmitCart()
+  {
+    let date: Date = new Date(); 
+let prods = this.cartService.GetCart(); 
+    let order = {
+      date: date.toLocaleString(),
+      products: prods,
+      status: 1,
+      username: this.user.username,
+      userid: this.user.docId,
+    } as IOrder;
+    
+    this.db.collection('order').add(order); 
+    Swal.fire('Успешно записване', 'Приехме вашата поръчка!', 'success');
+    this.cartService.Clear();
+    this.router.navigate(['/home']) ;
+     
+  }
 }
