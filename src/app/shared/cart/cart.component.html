@@ -10,7 +10,9 @@
         <p>наложен платеж</p>
       </div>
       <div class="info buybtn">
+
         <button (click)="SubmitCart()" class="buy" mat-raised-button color="warn">Купи</button>
+        <h1 id="total">Общо {{total}}</h1>
       </div>
     </div>
     <div *ngIf="products.length === 0">No Products!</div>

@@ -16,9 +16,11 @@ import { CartService } from '../services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public cartService: CartService, public db: AngularFirestore, public router: Router, public auth : AuthService) { }
+  constructor(public cartService: CartService, public db: AngularFirestore, public router: Router, public auth: AuthService) { }
   products: IProduct[];
   user: IEmployee;
+
+  total: number = 0;
   ngOnInit(): void {
     this.user = this.auth.currentUser;
     let s = this.cartService.GetCart();
@@ -29,25 +31,40 @@ export class CartComponent implements OnInit {
       obj.forEach(element => {
         prods.push(element.docId);
       });
- 
+
       this.db.collection('product').snapshotChanges().subscribe((response) => {
         let vals: IProduct[];
         vals = response.map(item => {
           let prod: IProduct = item.payload.doc.data() as IProduct;
           prod.docId = item.payload.doc.id;
+
+          
           return prod;
         });
+ 
+        this.products = vals.filter(item => prods.includes(item.docId));
 
-        this.products = vals.filter(item => prods.includes(item.docId)); 
+        let ttt : number = 0;
+        for (let i = 0; i < this.products.length; i++) { 
+          let prod =this.products[i];
+          if (prod.promopercentage > 0) {
+            let t: number = (prod!.price - (prod!.price * (prod!.promopercentage / 100))); 
+            ttt += +t
+          } else {
+           let t: number =  prod.price; 
+            
+           ttt += +t;
+          }
+        } 
+ this.total = ttt;
       });
     }
-  } 
+  }
 
 
-  SubmitCart()
-  {
-    let date: Date = new Date(); 
-let prods = this.cartService.GetCart(); 
+  SubmitCart() {
+    let date: Date = new Date();
+    let prods = this.cartService.GetCart();
     let order = {
       date: date.toLocaleString(),
       products: prods,
@@ -55,11 +72,11 @@ let prods = this.cartService.GetCart();
       username: this.user.username,
       userid: this.user.docId,
     } as IOrder;
-    
-    this.db.collection('order').add(order); 
+
+    this.db.collection('order').add(order);
     Swal.fire('Успешно записване', 'Приехме вашата поръчка!', 'success');
     this.cartService.Clear();
-    this.router.navigate(['/home']) ;
-     
+    this.router.navigate(['/home']);
+
   }
 }

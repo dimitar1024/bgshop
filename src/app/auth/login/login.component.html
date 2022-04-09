@@ -21,7 +21,7 @@
 
         <mat-form-field class="justifier">
           <input matInput #passwordt="ngModel" placeholder="Парола" ngModel name="password" minlength="5"
-            text="password" class="form-input">
+           type="password" class="form-input">
         </mat-form-field>
 
         <ng-container *ngIf="passwordt.touched && passwordt.invalid">

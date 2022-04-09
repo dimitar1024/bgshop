@@ -2,6 +2,7 @@ import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { IEmployee } from 'src/app/interfaces/IEmployee'; 
 import { IOrder } from 'src/app/interfaces/IOrder';
 import Swal from 'sweetalert2';
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   displayedColumns: string[] = ['first_name', 'last_name', 'username', 'actions'];
   @ViewChild('editProfileForm') editProfileForm: NgForm;
   emplDocId: string;
-  constructor(public db: AngularFirestore, private activatedRoute: ActivatedRoute,public router: Router) { }
+  constructor(public db: AngularFirestore, private activatedRoute: ActivatedRoute,public router: Router, public cookieService: CookieService) { }
   orders: IOrder[];
   ngOnInit(): void {
 
@@ -53,6 +54,12 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  getOrder(products:string, details: string)
+  {
+    console.log(products);
+    this.cookieService.set('__p',products)
+    this.router.navigate(['/orders/details/'+details]) ;
+  }
 
   submitProfile() {
     this.db.doc('user/' + this.emplDocId).update({

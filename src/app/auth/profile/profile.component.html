@@ -111,7 +111,8 @@
           <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef> </th>
               <td class="buttons" mat-cell *matCellDef="let element">
-                  
+                <button (click)="getOrder(element.products,element.userid)" mat-raised-button color="primary">Виж
+                  повече</button>
   
               </td>
           </ng-container>
@@ -121,5 +122,5 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
   
-      <div *ngIf="orders.length === 0">No Employees!</div>
+      <div *ngIf="orders.length === 0">Няма поръчки!</div>
   </div>

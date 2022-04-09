@@ -41,10 +41,15 @@ mat-card-actions{
 }
 
 .floatleft{
-    float: left;
+    float: left; 
+    width: 30px;
 }
 
 mat-card-title {
     height: 50px;
+}
+
+mat-card-actions{
+    height: 55px;
 }
  

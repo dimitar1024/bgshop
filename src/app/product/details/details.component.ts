@@ -38,6 +38,7 @@ export class DetailsComponent implements OnInit {
             prod.docId = response.payload.id;
             this.product = prod;
 
+
             let url: string = this.product!.imageUrl;
             const ref = this.storage.ref(url);
             this.profileUrl = ref.getDownloadURL();
@@ -69,11 +70,12 @@ export class DetailsComponent implements OnInit {
 
   getComments() {
     this.db.collection('comment').snapshotChanges().subscribe((response) => {
-      this.comments = response.map(item => {
+      let comment = response.map(item => {
         let prod: IComment = item.payload.doc.data() as IComment; 
         return prod;
-      }
-      );
+      });
+
+      this.comments = comment.filter(x => x.product == this.product.docId);
     })
   }
 

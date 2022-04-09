@@ -55,7 +55,7 @@ export class CategoryComponent implements OnInit, OnChanges {
         let vals: IProduct[];
         vals = response.map(item => {
           let prod: IProduct = item.payload.doc.data() as IProduct;
-          prod.docId = item.payload.doc.id;
+          prod.docId = item.payload.doc.id; 
           return prod;
         });
 

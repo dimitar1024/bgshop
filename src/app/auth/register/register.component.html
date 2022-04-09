@@ -88,7 +88,7 @@
           </ng-container>
 
         <mat-form-field class="justifier">
-            <input matInput  #passt="ngModel" ngModel name="password" minlength="5" required placeholder="Парола" text="password" class="form-input">
+            <input matInput type="password"  #passt="ngModel" ngModel name="password" minlength="5" required placeholder="Парола" text="password" class="form-input">
         </mat-form-field>
 
         <ng-container *ngIf="passt.touched && passt.invalid">
@@ -101,7 +101,7 @@
         </ng-container>
 
         <mat-form-field class="justifier">
-            <input matInput #confpasst="ngModel" ngModel name="confpassword" minlength="5"  required placeholder="Повтори парола" text="password" class="form-input">
+            <input matInput type="password" #confpasst="ngModel" ngModel name="confpassword" minlength="5"  required placeholder="Повтори парола" text="password" class="form-input">
         </mat-form-field>
 
         <ng-container *ngIf="confpasst.touched && confpasst.invalid">

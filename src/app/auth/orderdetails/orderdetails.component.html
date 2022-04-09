@@ -2,6 +2,9 @@
   <div class="cartlist" *ngIf="products"> 
     <app-cart-item *ngFor="let prod of products" [isReadOnly] = true [qty]="prod.qty" [product]="prod"></app-cart-item>
  
+   <div class="total">
+<h1>Общо {{total}}</h1>
+   </div>
     <div *ngIf="products.length === 0">No Products!</div>
   </div>
   <div *ngIf="!products">

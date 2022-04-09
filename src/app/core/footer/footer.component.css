@@ -23,3 +23,8 @@
     text-align: center;
     color: white;
 }
+
+
+a, a:active, a:valid{
+    color: white;
+}

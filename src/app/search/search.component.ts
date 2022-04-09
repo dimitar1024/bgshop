@@ -14,17 +14,17 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      const id: number = params['id'];
-      console.log(id);
+      const id: number = params['id']; 
       this.db.collection('product').snapshotChanges().subscribe((response) => {
         let vals: IProduct[];
         vals = response.map(item => {
           let prod: IProduct = item.payload.doc.data() as IProduct;
-          prod.docId = item.payload.doc.id;
+          prod.docId = item.payload.doc.id; 
           return prod;
         });
-
-        this.products = vals.filter(d => d.name.toLowerCase().indexOf(id.toString().toLowerCase()) != -1 );
+ 
+        this.products = vals.filter(d => 
+           d.name.toLowerCase().indexOf(id.toString().toLowerCase()) != -1 );
       })
     })
   }
