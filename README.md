@@ -28,32 +28,32 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-Technology
-Angular 13
-Firebase – use for save users, products, images.
-SweetAlert2 – showing alerts.
-angular material – use for showing content.
-crypto-js – use for crypt current user in cookie.
-ngx-cookie-service – use for save current user in cookie.
-Rxjs- use for get data form firebase. 
+Technology <br/>
+Angular 13 <br/>
+Firebase – use for save users, products, images. <br/>
+SweetAlert2 – showing alerts. <br/>
+angular material – use for showing content. <br/>
+crypto-js – use for crypt current user in cookie. <br/>
+ngx-cookie-service – use for save current user in cookie. <br/>
+Rxjs- use for get data form firebase.  <br/>
 
-Public
-/home page
-/login
-/register
-/promotions – show products with discount
-/search - show products with a name containing the search word
-Admin 
-User: sysadmin@test.bg  Pass:123456 
-/admin/employee/new – Create new employee.
-/admin/employees – List all employees. Admin can edit or delete employees.  
-Employee
-User: employee@abv.bg Pass:123456 
-/product/new – create new product
-/products/ - list all products. Employee can edit or delete product.
-/orders – list with user orders 
-User
-User: user@abv.bg Pass:123456 
-/home – User can add products in cart.  
-/cart – show selected products. 
+Public <br/>
+/home page <br/>
+/login <br/>
+/register <br/>
+/promotions – show products with discount <br/>
+/search - show products with a name containing the search word <br/>
+Admin  <br/>
+User: sysadmin@test.bg  Pass:123456  <br/>
+/admin/employee/new – Create new employee. <br/>
+/admin/employees – List all employees. Admin can edit or delete employees. <br/>  
+Employee <br/>
+User: employee@abv.bg Pass:123456  <br/>
+/product/new – create new product <br/>
+/products/ - list all products. Employee can edit or delete product. <br/>
+/orders – list with user orders  <br/>
+User <br/>
+User: user@abv.bg Pass:123456  <br/>
+/home – User can add products in cart.   <br/>
+/cart – show selected products. <br/>
 
