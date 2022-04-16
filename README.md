@@ -25,3 +25,35 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+Technology
+Angular 13
+Firebase – use for save users, products, images.
+SweetAlert2 – showing alerts.
+angular material – use for showing content.
+crypto-js – use for crypt current user in cookie.
+ngx-cookie-service – use for save current user in cookie.
+Rxjs- use for get data form firebase. 
+
+Public
+/home page
+/login
+/register
+/promotions – show products with discount
+/search - show products with a name containing the search word
+Admin 
+User: sysadmin@test.bg  Pass:123456 
+/admin/employee/new – Create new employee.
+/admin/employees – List all employees. Admin can edit or delete employees.  
+Employee
+User: employee@abv.bg Pass:123456 
+/product/new – create new product
+/products/ - list all products. Employee can edit or delete product.
+/orders – list with user orders 
+User
+User: user@abv.bg Pass:123456 
+/home – User can add products in cart.  
+/cart – show selected products. 
+
