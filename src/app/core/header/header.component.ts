@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   role: number = 0;
   search: string = '';
   cartCount: number;
+  def: number;
 
 
 
@@ -50,7 +51,12 @@ export class HeaderComponent implements OnInit, OnChanges {
     });
 
     this.cartService.getCount.subscribe((c) => {
-      this.cartCount = c;
+      if(c== 0)
+      {
+        this.cartCount= this.def;
+      }else{ 
+        this.cartCount = c;
+      }
     })
 
   }

@@ -5,6 +5,7 @@ import { OrdersComponent } from './auth/orders/orders.component';
 import { ProfileComponent } from './auth/profile/profile.component'; 
 import { CategoryComponent } from './category/category.component';
 import { HomeComponent } from './home/home.component'; 
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AllProductComponent } from './product/all-product/all-product.component';
 import { DetailsComponent } from './product/details/details.component';
 import { EditProductComponent } from './product/edit-product/edit-product.component';
@@ -29,8 +30,8 @@ const routes: Routes = [
   { path: 'search/:id', component: SearchComponent },
   { path: 'promotions', component: PromotionsComponent },
   { path: 'cart', component: CartComponent }, 
-  { path: 'profile/:id',  canActivate: [UserGuard], component: ProfileComponent }
-  // {  path: '**', component: PagenotfoundComponent},
+  { path: 'profile/:id',  canActivate: [UserGuard], component: ProfileComponent },
+ //{  path: '**', component: PagenotfoundComponent},
 ];
 
 @NgModule({

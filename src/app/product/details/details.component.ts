@@ -64,6 +64,7 @@ export class DetailsComponent implements OnInit {
       } as IComment;
 
       this.db.collection('comment').add(comment);
+      commentForm.reset();
     });
   }
 

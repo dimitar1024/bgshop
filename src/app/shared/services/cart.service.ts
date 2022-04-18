@@ -97,6 +97,7 @@ export class CartService {
 
 
   Clear() {
+    this.getCount.emit(0);
     this.cookieService.delete(this.cart);
   }
 
